@@ -52,7 +52,7 @@ void Thruster::OnThrustCmd(const std_msgs::Float32::ConstPtr &_msg)
   ROS_DEBUG_STREAM("New thrust command! " << _msg->data);
   std::lock_guard<std::mutex> lock(this->plugin->mutex);
   this->lastCmdTime = this->plugin->world->GetSimTime();
-  this->currCmd = _msg->data;
+  this->currCmd = (_msg->data/500);
 }
 
 //////////////////////////////////////////////////
